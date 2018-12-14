@@ -1,0 +1,12 @@
+12 80 Main Menu:
+
+     (1) Average GDP of selected sector over four years.
+     (2) The lowest GDP data and its corresponding sector for a selected year.
+     (3) The differences in GDP between yearly average and Manufacturing
+	 sector for year 2011 and 2014.
+     (4) The highest increase in GDP between consecutive years, while
+	 indicating its corresponding sector.
+     (5) The two highest GDP data and their corresponding sectors
+	 from 2013 to 2014.
+     (6) The percentage increase in GDP for each consecutive year for a
+	 selected sector.

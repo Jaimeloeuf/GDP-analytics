@@ -1,0 +1,11 @@
+-This folder contains all txt documents that contains the menu as specified by their names
+-The file's formats and setting variables should not be changed / messed with unless you know what you are doing. After editing please save file in the below specified format for the program to be able to use it again.
+
+The files are save with the format (All items needs to be seperated by a whitespace char):
+
+(1)numOflines variable: ...
+(2)max_line_length Variable: ... +1 (the line length includes all whitespaces) (its ok to put it higher than it actually is just to be on the safe side of formating)
+(3)*Actual menu content
+
+-The words numOflines and max_line_length will not be stored, only a value of integer type will be stored for reading in.
+-Variables specified in (1) n (2) will be read in, stored and processed first before the content in the actual menu is read into buffer and printed.

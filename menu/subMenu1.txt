@@ -1,0 +1,9 @@
+9 70 Sub Menu (1):
+
+     Select a sector to display its average GDP over the four years.
+
+     (1) Manufacturing
+     (2) Construction
+     (3) Utilities
+     (4) Wholesale & Retail Trade
+     (5) Transportation and Storage

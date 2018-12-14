@@ -1,0 +1,6 @@
+-This folder stores files that contains all settings and data for the application to work.
+-Please do not edit the files manually over here as you might risk making the files unreadable by changing the predefined format and thus cause the program to stop working.
+-If the need to edit data ever arises please edit or input data through the application itself. Or edit the files with the correct predefined format.
+
+-Format for program data file:
+(1) number_of_sectors (2) earliest_year (3) latest_year

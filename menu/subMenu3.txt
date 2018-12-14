@@ -1,0 +1,9 @@
+9 80 Sub Menu (3):
+
+     Select a year to display the difference between its yearly average GDP
+     data and the Manufactoring sector.
+
+     (1) Year 2011
+     (2) Year 2012
+     (3) Year 2013
+     (4) Year 2014

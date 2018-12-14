@@ -1,0 +1,12 @@
+Manual:
+
+     This program helps you to analyze a given set of GDP data.
+     
+     Basic description of the general set of features:
+     (1) Calculation of Average values
+     (2) Finding of lowest and highest values
+     (3) Sorting of data in descending or ascending order
+     (4) Analysis of Growth or Decay
+     (5) Comparison of data
+
+     To use the program

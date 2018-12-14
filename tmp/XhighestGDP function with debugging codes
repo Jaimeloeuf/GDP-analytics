@@ -1,0 +1,90 @@
+float * XhighestGDP(float * gdp, int selectedYr, int position, int returnType)
+{
+    /* Input:
+    (2) selectedYr defines the year for sorting
+    (3) Position defines the data as xxx position from highest value to be returned.
+        E.g. input '4' means the 4th highest GDP data. It also defines if the array for
+        sorting should be created with 'position' or 'numberOfSectors' number of elements.
+        If position is 1, lowesthighest can do the job, but XhighestGDP function
+        should still be used during implementation for consistency.
+        Position cannot be at 0, since the input should be of human readable format.
+    (4) returnType is a boolean value (using int instead since C does not support bool type)
+        that determines if the whole array is returned for further processing or just a single
+        float value corresponding with the position value.
+        
+        *** 3 possible return types can be specified by the inputs (position, returnType)
+        (0, dont_care_state) If position is == 0, sort and return the entire gdp array
+        (position is !0, 0) where returnType == 0, an array with 'specified position' as number of elements
+        (position is !0, 1) where returnType == 1, a pointer to the value corresponding with the position
+        *the 3 return types will be commented as condition(1, 2, 3)
+
+        *** REGARDLESS of returnType, the data will be stored and returned via pointer to a heap memory
+        locataion with values copied from stack memory after calculation, function caller is advised
+        to free() memory via pointer IMMEDIATELY after using or moving data into its own data container
+        (preferably of stack memory) to prevent memory leakage.
+    */
+
+    int stopperPosition; // Loop control constant
+    if(position)
+        stopperPosition = position; // Condition 2 n 3
+    else
+        stopperPosition = numberOfSectors; // Condition 1
+
+    float arrangedDataStack[stopperPosition]; // Use memset please, due to variable size
+    for(int i = 0; i<stopperPosition; i++)
+        printf("value %d is %.2f\n", i, arrangedDataStack[i]);
+    /*for(int i = 0; i<stopperPosition; i++)
+        arrangedDataStack[i] = 0.0f;*/
+    memset(arrangedDataStack, 0, sizeof(float) * stopperPosition); // Should I use this?
+    for(int i = 0; i<stopperPosition; i++)
+        printf("value %d is %.2f\n", i, arrangedDataStack[i]);
+
+    clear_screen(1, 0);
+    int numOfyears = latestYr - earliestYr + 1;
+
+    arrangedDataStack[0] = lowesthighest(gdp, selectedYr, 1); // Setting highestvalue first
+    printf("Highest value at arrangedDataStack[0] is %.2f\n", arrangedDataStack[0]);
+    selectedYr -= earliestYr; // setting only after calling lowesthighest function since it also takes year input in human format
+    printf("The year index is %d\n", selectedYr);
+    getchar();
+    for(int i = 1; i<stopperPosition; i++) // 'i' starts at 1 sinceindex 0 has been set to the highest value already
+    {
+        printf("Looping through the array to the set now round %d\n", i);
+        for(int j = 0; j<numberOfSectors; j++)
+        {
+            printf("Looping through all the sectors now, at loop number %d\n", j);
+            printf("Checking to see if '%.2f' is bigger than '%.2f' ", *(gdp + (j * numOfyears) + selectedYr), arrangedDataStack[i]);
+            printf("and smaller than '%.2f'", arrangedDataStack[i-1]);
+            getchar();
+            if((*(gdp + (j * numOfyears) + selectedYr) > arrangedDataStack[i]) && (*(gdp + (j * numOfyears) + selectedYr) < arrangedDataStack[i-1]))
+            {
+                // Simplify the above expression
+                printf("Condition deemed true by cpu\n");
+                arrangedDataStack[i] = *(gdp + (j * numOfyears) + selectedYr);
+                printf("arrangedDataStack[%d] is: %.2f\n", i, arrangedDataStack[i]);
+            }
+            else
+            {
+                printf("Condition deemed false by cpu\n");
+                printf("arrangedDataStack[%d] is: %.2f\n", i, arrangedDataStack[i]);   
+            }
+            getchar();
+        }
+    }
+
+    for(int i = 0; i<stopperPosition; i++)
+        printf("The value at position %d of the array is %.2f\n", i, arrangedDataStack[i]);
+
+    if(position && returnType) // Condition 3
+    {
+        float *XhighestDataHeap = (float*) malloc(sizeof(float));
+        *XhighestDataHeap = arrangedDataStack[position - 1];
+        return XhighestDataHeap;
+    }
+    else // Condition 1 n 2
+    {
+        float *arrangedDataHeap = (float*) calloc(stopperPosition, sizeof(float));
+        memcpy(arrangedDataHeap, arrangedDataStack, sizeof(float) * stopperPosition);
+        return arrangedDataHeap;
+    }
+}
