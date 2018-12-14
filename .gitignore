@@ -1,0 +1,3 @@
+# Do not track executables and object files
+*.exe
+*.o
